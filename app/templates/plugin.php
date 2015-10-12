@@ -30,9 +30,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-/**
- * Built using generator-plugin-wp
- */
 
 <% if ( autoloader == 'Basic' ) { %>
 /**
@@ -137,6 +134,11 @@ class <%= classname %> {
 		$this->basename = plugin_basename( __FILE__ );
 		$this->url      = plugin_dir_url( __FILE__ );
 		$this->path     = plugin_dir_path( __FILE__ );
+
+		if ( ! defined( 'JOB_MANAGER_VISIBILITY_VERSION' ) ) define( 'JOB_MANAGER_VISIBILITY_VERSION', WP_Job_Manager_Visibility::VERSION );
+		if ( ! defined( 'JOB_MANAGER_VISIBILITY_PROD_ID' ) ) define( 'JOB_MANAGER_VISIBILITY_PROD_ID', WP_Job_Manager_Visibility::PROD_ID );
+		if ( ! defined( 'JOB_MANAGER_VISIBILITY_PLUGIN_DIR' ) ) define( 'JOB_MANAGER_VISIBILITY_PLUGIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+		if ( ! defined( 'JOB_MANAGER_VISIBILITY_PLUGIN_URL' ) ) define( 'JOB_MANAGER_VISIBILITY_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 
 		$this->plugin_classes();
 	}
